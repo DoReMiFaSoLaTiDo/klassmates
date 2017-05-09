@@ -29,6 +29,7 @@ gem 'active_model_serializers'
 gem "devise"
 
 gem 'react-rails'
+gem 'showdown-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
