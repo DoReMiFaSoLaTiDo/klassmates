@@ -9,8 +9,7 @@ describe Role do
 
   context "with invalid parameters" do
     before(:each) do
-      @invalid_role = FactoryGirl.build :role
-      @invalid_role.tap { |ip| ip.name = nil }
+      @invalid_role = FactoryGirl.build :invalid_role
     end
 
     it "should not be valid" do

@@ -2,7 +2,7 @@ require 'ffaker'
 
 FactoryGirl.define do
   factory :user do
-    role 
+    role
     phone { FFaker::PhoneNumber.short_phone_number }
     email { FFaker::Internet.email }
     password "12345678"
@@ -10,6 +10,10 @@ FactoryGirl.define do
 
     factory :invalid_user do
       email nil
+    end
+
+    factory :verifier do
+      role { FactoryGirl.create :moneybag }
     end
   end
 end

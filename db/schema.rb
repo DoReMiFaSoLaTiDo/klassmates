@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506074519) do
+ActiveRecord::Schema.define(version: 20170512032916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contributions", force: :cascade do |t|
+    t.decimal  "amount_lcy", precision: 13, scale: 2
+    t.decimal  "amount_fcy", precision: 13, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +29,21 @@ ActiveRecord::Schema.define(version: 20170506074519) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal  "amount",          precision: 13, scale: 2
+    t.integer  "currency"
+    t.integer  "owner_id"
+    t.integer  "contribution_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "tran_type"
+    t.integer  "status"
+    t.integer  "verifier_id"
+  end
+
+  add_index "transactions", ["contribution_id"], name: "index_transactions_on_contribution_id", using: :btree
+  add_index "transactions", ["owner_id"], name: "index_transactions_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -46,5 +68,7 @@ ActiveRecord::Schema.define(version: 20170506074519) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "transactions", "contributions"
+  add_foreign_key "transactions", "users", column: "owner_id"
   add_foreign_key "users", "roles"
 end

@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
+  has_many :transactions, foreign_key: :owner_id
+  has_one :contribution, through: :transactions
+
+  has_many :verified_transactions, class_name: :transactions, foreign_key: :verifier_id
 
   validates :email, presence: true
   validates :phone, presence: true
