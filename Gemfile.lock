@@ -188,6 +188,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     showdown-rails (0.1.0)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -243,6 +245,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  shoulda-matchers
   showdown-rails
   spring
   turbolinks

@@ -3,6 +3,7 @@ class Api::TransactionsController < ApplicationController
 
   before_action :authenticate_with_token!, only: [:update, :destroy]
   before_filter :set_transaction, only: [:show, :update, :destroy ]
+  before_filter :set_user, only: [:show, :index, :create, :update, :destroy ]
 
   def index
     @transactions = Transaction.all
@@ -25,6 +26,7 @@ class Api::TransactionsController < ApplicationController
 
   def update
     if @transaction.update(approved_params)
+      # :update_account_balance if @transaction[:status] eql :verified     
       render json: @transaction, status: 201
     else
       render json: { errors: @transaction.errors }, status: :unprocessable_entity
@@ -39,6 +41,10 @@ class Api::TransactionsController < ApplicationController
   private
     def set_transaction
       @transaction = Transaction.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user
     end
 
     def approved_params

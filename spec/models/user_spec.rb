@@ -20,6 +20,16 @@ describe User do
     expect( FactoryGirl.build(:user, email: nil) ).to_not be_valid
   end
 
+  describe "#contribution association" do
+    before { FactoryGirl.create :contribution, user: @user }
+
+    it "destroys the associated contribution account on self destruct" do
+      contribution = @user.contribution
+      @user.destroy
+      expect{ Contribution.find(contribution.id) }.to raise_error ActiveRecord::RecordNotFound
+    end
+  end
+
   describe "#generate_authentication_token!" do
     it "generates a unique token" do
       Devise.stub(:friendly_token).and_return("myuniquetoken567")

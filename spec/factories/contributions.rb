@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :contribution do
-    amount_lcy "9.99"
-    amount_fcy "9.99"
+    balance_lcy "0.00"
+    balance_fcy "0.00"
+    user
   end
 end
