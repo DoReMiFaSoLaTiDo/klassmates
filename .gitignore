@@ -16,3 +16,5 @@ public/uploads
 /config/cloudinary.yml
 /.ruby-gemset
 /.ruby-version
+/public/packs
+/node_modules
