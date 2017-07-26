@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe User do
-  before {@user = FactoryGirl.create :user }
+  before do
+    @user = FactoryGirl.build( :user )
+    @user.build_profile(name: 'Charlie Sweet') 
+  end
 
   subject{ @user }
 
@@ -11,6 +14,7 @@ describe User do
   it { should respond_to :password }
   it { should respond_to :password_confirmation }
   it { should respond_to :auth_token }
+  it { should accept_nested_attributes_for(:profile) }
 
   it "is not valid without a phone number" do
     expect( FactoryGirl.build(:user, phone: nil) ).to_not be_valid

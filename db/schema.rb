@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512143501) do
+ActiveRecord::Schema.define(version: 20170721224032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20170512143501) do
   end
 
   add_index "contributions", ["user_id"], name: "index_contributions_on_user_id", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "image"
+    t.date     "birthday"
+    t.text     "specialities"
+    t.text     "in_network"
+    t.text     "contact"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170512143501) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "contributions", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "transactions", "contributions"
   add_foreign_key "transactions", "users", column: "owner_id"
   add_foreign_key "users", "roles"

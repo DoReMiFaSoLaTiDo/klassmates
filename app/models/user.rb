@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :transactions, foreign_key: :owner_id
   has_one :contribution, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile
+  
 
   has_many :verified_transactions, class_name: :transactions, foreign_key: :verifier_id
 

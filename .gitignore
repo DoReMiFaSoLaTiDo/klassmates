@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 /config/database.yml
+public/uploads
+/config/cloudinary.yml
+/.ruby-gemset
+/.ruby-version
