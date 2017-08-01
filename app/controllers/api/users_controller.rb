@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < ApiController
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   before_action :authenticate_with_token!, only: [:update, :destroy]

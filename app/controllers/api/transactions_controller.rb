@@ -1,4 +1,4 @@
-class Api::TransactionsController < ApplicationController
+class Api::TransactionsController < ApiController
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   before_action :authenticate_with_token!, only: [:update, :destroy]
@@ -26,7 +26,7 @@ class Api::TransactionsController < ApplicationController
 
   def update
     if @transaction.update(approved_params)
-      # :update_account_balance if @transaction[:status] eql :verified     
+      # :update_account_balance if @transaction[:status] eql :verified
       render json: @transaction, status: 201
     else
       render json: { errors: @transaction.errors }, status: :unprocessable_entity

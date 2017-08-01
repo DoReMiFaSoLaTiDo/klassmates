@@ -1,4 +1,4 @@
-class Api::SessionsController < ApplicationController
+class Api::SessionsController < ApiController
 
   def create
     user_password = params[:session][:password]

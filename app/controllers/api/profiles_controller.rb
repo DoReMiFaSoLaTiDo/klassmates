@@ -1,4 +1,4 @@
-class Api::ProfilesController < ApplicationController
+class Api::ProfilesController < ApiController
   before_action :authenticate_with_token!, only: [:update, :destroy]
 
   before_action :set_profile, only: [:show, :edit, :update]
