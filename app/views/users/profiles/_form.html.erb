@@ -1,0 +1,13 @@
+<%= simple_form_for([@user, @profile], url: url_for(action: 'update', controller: 'users/profiles'), method: 'patch', html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.file_field :image, label: "Profile Picture" %>
+  <%= f.input :nickname, label: "Nickname", placeholder: "Your nickname at school" %>
+  <%= f.input :birthday, as: :date, html5: true, label: "Birthday" %>
+  <%= f.input :specialities, label: "Specialities", placeholder: "What you do" %>
+  <%= f.input :in_network, label: "Connected Services", placeholder: "Good Service providers you know" %>
+  <%= f.input :contact, label: "Contacts", placeholder: "Contact details" %>
+  <%= f.input :status, label: "Status", collection: Profile.statuses.keys %>
+
+  <%= f.button :submit %>
+<% end %>

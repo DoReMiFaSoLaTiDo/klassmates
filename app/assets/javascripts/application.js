@@ -13,9 +13,15 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
-//= require showdown
+// require showdown
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree .
+
+$(document).ready(function () {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+});

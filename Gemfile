@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-
+gem 'responders'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -31,13 +31,15 @@ gem 'active_model_serializers'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "devise"
+gem 'jwt'
 
 gem 'react-rails'
-gem 'react_on_rails', '8.0.0'
+# gem 'react_on_rails', '8.0.0'
 gem 'showdown-rails'
 gem "webpacker"
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_form'
 # gem 'react-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -68,3 +70,6 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
 end
+
+gem 'mini_racer', platforms: :ruby
+gem 'webpacker_lite'

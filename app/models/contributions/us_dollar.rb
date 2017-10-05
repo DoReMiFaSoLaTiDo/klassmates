@@ -1,0 +1,3 @@
+class UsDollar < Contribution
+
+end

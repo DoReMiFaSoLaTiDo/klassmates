@@ -1,0 +1,3 @@
+class Donation < CooperativeAccount
+
+end

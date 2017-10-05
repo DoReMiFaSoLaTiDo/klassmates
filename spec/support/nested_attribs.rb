@@ -15,7 +15,7 @@
       @nested_att_present && ( @reject.nil? || @reject_success ) && ( @accept.nil? || @accept_success )
     end
 
-    failure_message_for_should do
+    failure_message do
       messages = []
       messages << "accept nested attributes for #{association}" unless @nested_att_present
       messages << "reject values #{@reject.inspect} for association #{association}" unless @reject_success

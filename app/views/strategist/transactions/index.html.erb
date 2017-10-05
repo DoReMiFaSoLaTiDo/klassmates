@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <% content_for(:sidebar) do %>
+    <%= render partial: "shared/sidenav" %>
+  <% end %>
+  <div id="content">
+    <div class="panel panel-primary col-md-6 col-sm-6 col-xs-12">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3 class="panel-title">List of Transactions</h3>
+      </div>
+      <div class="panel-body">
+        <p>All applicable transactions are listed below</p>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <%- attributes(:transaction).each do |attr| %>
+              <th><%= User.human_attribute_name(attr) %></th>
+            <% end %>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each do |resource| %>
+            <tr>
+              <% attributes(:transaction).each do |attr| %>
+                <td><%= resource.public_send(attr).to_s.truncate(20) %></td>
+              <% end %>
+              <td><%= link_to "Show", strategist_transaction_path(resource) %></td>
+              <td><%= link_to "Edit", edit_strategist_transaction_path(resource) %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

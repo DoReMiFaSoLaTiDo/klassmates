@@ -13,9 +13,14 @@ describe Profile do
   it { should respond_to :in_network }
   it { should respond_to :contact }
   it { should respond_to :image }
+  it { should respond_to :status }
 
   it "is not valid without a name" do
     expect( FactoryGirl.build(:invalid_profile) ).to_not be_valid
+  end
+
+  it "is not valid without a status" do
+    expect( FactoryGirl.build(:invalid_status) ).to_not be_valid
   end
 
 

@@ -1,0 +1,93 @@
+<div class="main_container">
+
+  <div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+
+
+      <!-- menu profile quick info -->
+      <div class="profile">
+        <div class="profile_pic">
+          <%= user_image @profile  %>
+        </div>
+        <div class="profile_info">
+          <p><span>Welcome, <%= @profile.name %></span></p>
+          <p> Birthday: <%= user_birthday @profile %>
+            <br />
+          Contact: <%= @profile.user_phone %> </p>
+        </div>
+
+      </div>
+      <!-- /menu profile quick info -->
+
+      <hr />
+
+      <!-- sidebar menu -->
+      <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+        <div class="menu_section">
+          <ul class="nav side-menu">
+            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><a href="index.html">Dashboard</a>
+                </li>
+                <li><a href="index2.html">Dashboard2</a>
+                </li>
+                <li><a href="index3.html">Dashboard3</a>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><a href="form.html">Business Proposal</a>
+                </li>
+                <li><a href="form_advanced.html">Loan Request</a>
+                </li>
+                <li><a href="form_validation.html">Support</a>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-desktop"></i> Contributions <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><a href="general_elements.html">Transactions</a>
+                </li>
+                <li><a href="media_gallery.html">Make a Contribution</a>
+                </li>
+                <li><a href="typography.html">Funds Withdrawal</a>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-table"></i> Messages <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><a href="tables.html">Inbox</a>
+                </li>
+                <li><a href="tables_dynamic.html">Outbox</a>
+                </li>
+                <li><a href="tables_dynamic.html">Discussion Forum</a>
+                </li>
+                <li><a href="tables_dynamic.html">Public Service Announcement</a>
+                </li>
+                <li><a href="tables_dynamic.html">Group Projects<span class="label label-success pull-right">Coming Soon</span></a>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-table"></i> Group Projects <span class="label label-success pull-right">Coming Soon</span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><a href="tables.html">Inbox</a>
+                </li>
+                <li><a href="tables_dynamic.html">Outbox</a>
+                </li>
+                <li><a href="tables_dynamic.html">Discussion Forum</a>
+                </li>
+                <li><a href="tables_dynamic.html">Public Service Announcement</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- /sidebar menu -->
+
+
+    </div>
+  </div>

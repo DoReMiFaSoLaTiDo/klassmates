@@ -11,20 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721224032) do
+ActiveRecord::Schema.define(version: 20170915173551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contributions", force: :cascade do |t|
-    t.decimal  "balance_lcy", precision: 13, scale: 2
-    t.decimal  "balance_fcy", precision: 13, scale: 2
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id"
+    t.decimal  "naira_balance",     precision: 13, scale: 2
+    t.decimal  "us_dollar_balance", precision: 13, scale: 2
+    t.decimal  "gb_pound_balance",  precision: 13, scale: 2
   end
 
   add_index "contributions", ["user_id"], name: "index_contributions_on_user_id", using: :btree
+
+  create_table "cooperative_accounts", force: :cascade do |t|
+    t.string   "account_name"
+    t.string   "account_type"
+    t.decimal  "naira_balance", precision: 13, scale: 2
+    t.decimal  "usd_balance",   precision: 13, scale: 2
+    t.decimal  "gbp_balance",   precision: 13, scale: 2
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170721224032) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "status"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -51,17 +63,22 @@ ActiveRecord::Schema.define(version: 20170721224032) do
   create_table "transactions", force: :cascade do |t|
     t.decimal  "amount",          precision: 13, scale: 2
     t.integer  "currency"
-    t.integer  "owner_id"
+    t.integer  "creator_id"
     t.integer  "contribution_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "tran_type"
     t.integer  "status"
     t.integer  "verifier_id"
+    t.string   "description"
+    t.date     "tran_date"
+    t.integer  "tranable_id"
+    t.string   "tranable_type"
   end
 
   add_index "transactions", ["contribution_id"], name: "index_transactions_on_contribution_id", using: :btree
-  add_index "transactions", ["owner_id"], name: "index_transactions_on_owner_id", using: :btree
+  add_index "transactions", ["creator_id"], name: "index_transactions_on_creator_id", using: :btree
+  add_index "transactions", ["tranable_type", "tranable_id"], name: "index_transactions_on_tranable_type_and_tranable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -89,6 +106,6 @@ ActiveRecord::Schema.define(version: 20170721224032) do
   add_foreign_key "contributions", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "transactions", "contributions"
-  add_foreign_key "transactions", "users", column: "owner_id"
+  add_foreign_key "transactions", "users", column: "creator_id"
   add_foreign_key "users", "roles"
 end

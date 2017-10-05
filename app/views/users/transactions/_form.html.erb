@@ -1,0 +1,12 @@
+<%= simple_form_for([@user, @transaction], url: url_for(action: 'create', controller: 'users/transactions'), method: 'post', html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :tran_type, label: "Transaction Type", collection: Transaction.tran_types.keys %>
+  <%= f.input :amount, label: "Amount" %>
+  <%= f.input :currency, label: "Currency", collection: Transaction.currencies.keys %>
+  <%= f.input :description, label: "description", placeholder: "Description" %>
+  <%= f.input :tran_date, as: :date, html5: true, label: "Transaction Date" %>
+  <%= f.hidden_field :owner_id %>
+  <%= f.hidden_field :verifier_id %>
+  <%= f.hidden_field :contribution_id %>
+  <%= f.hidden_field :status %>
+  <%= f.button :submit %>
+<% end %>

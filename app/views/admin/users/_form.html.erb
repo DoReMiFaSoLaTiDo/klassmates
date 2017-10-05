@@ -1,0 +1,13 @@
+<%= simple_form_for(@user, url: url_for(action: 'update', controller: 'admin/users'), method: 'patch', html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :email, label: "Email", readonly: true %>
+  <%= f.input :phone, label: "Phone", placeholder: "Phone Number", readonly: true %>
+  <%= f.fields_for :profile do |pf| %>
+
+      <%= pf.input :name, label: "Name", placeholder: "Name", readonly: true   %>
+      <%= pf.input :status, label: "Status", collection: Profile.statuses.keys %>
+
+  <% end %>
+  <%= f.association :role %>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

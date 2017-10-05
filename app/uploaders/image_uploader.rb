@@ -45,7 +45,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :thumbnail do
     eager
-    resize_to_fit(50, 50)
+    resize_to_fit(62, 62)
   end
 
   # Eagerly transform image to 150x200 with a sepia effect applied and then

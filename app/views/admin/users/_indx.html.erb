@@ -1,0 +1,21 @@
+
+<table>
+  <thead>
+    <tr>
+      <%- attributes.each do |attr| %>
+        <th><%= resource_class.human_attribute_name(attr) %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |resource| %>
+      <tr>
+        <% attributes.each do |attr| %>
+          <td><%= resource.public_send(attr).to_s.truncate(20) %></td>
+        <% end %>
+        <td><%= link_to "Show", resource_path(resource) %></td>
+        <td><%= link_to "Edit", edit_resource_path(resource) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

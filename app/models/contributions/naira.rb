@@ -1,0 +1,3 @@
+class Naira < Contribution
+
+end

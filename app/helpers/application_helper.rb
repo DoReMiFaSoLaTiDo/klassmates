@@ -9,7 +9,7 @@ module ApplicationHelper
 #  end
 
   def site_name
-    "UNILORIN Accounting&Finance Class '99"
+    "Klassmates"
   end
 
   def site_url

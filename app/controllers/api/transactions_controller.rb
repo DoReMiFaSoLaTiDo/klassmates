@@ -50,7 +50,7 @@ class Api::TransactionsController < ApiController
     def approved_params
       # raise params.inspect
       params.require(:transaction).permit(:id, :owner_id, :amount, :tran_type,
-      :currency, :status, :password_confirmation, :verifier_id)
+      :currency, :status, :password_confirmation, :verifier_id, :tran_date)
     end
 
     def render_404

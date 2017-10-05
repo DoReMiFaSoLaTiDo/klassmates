@@ -1,0 +1,3 @@
+class GbPound < Contribution
+
+end
